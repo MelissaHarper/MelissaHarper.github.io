@@ -2,6 +2,8 @@
 gems:
   - jemoji
   - jekyll-paginate
+  - github-pages
+  - bourbon
 
 # Site settings
 title: "Melissa Harper"
@@ -16,16 +18,16 @@ float_logo: true # true, false (default)
 # blog cover
 cover: "/assets/images/gateway_arch.jpg"
 
-name: 'Melissa Harper'
-author: 'Melissa Harper'
+name: "Melissa Harper"
+author: "Melissa Harper"
 author_image: "/assets/images/harper.jpg"
 
 paginate:	5
 
 url: "https://melissaharper.github.io" # the base hostname & protocol for your site
-baseurl: ""
+baseurl: "https://melissaharper.github.io/"
 #used to display twitter cards
-#twitter_handle: '@dirkfabisch'
+#twitter_handle: "@dirkfabisch"
 
 #fill in disqus shortname to use disqus
 #disqus: disqus-shortname
@@ -55,8 +57,8 @@ social:
     share_title:
     share_link:
 
- - icon:	linkedin
-    url:	www.linkedin.com/in/harper-melissa
+ #- icon:	linkedin
+  #  url:	www.linkedin.com/in/harper-melissa
 # #    desc:
 # #    share_url:
 # #    share_title:
