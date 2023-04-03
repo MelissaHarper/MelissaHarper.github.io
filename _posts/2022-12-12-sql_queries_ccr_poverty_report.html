@@ -368,14 +368,14 @@ on the queries themselves, this report documents the questions and the
 SQL queries used to answer them in PostgresSQL. For the full story, as
 well as more detailed information about understanding the data, check out the <a href="https://melissaharper.github.io//projects/2022/12/11/ccr_poverty_report.html">full report.</a>.<br />
 <em>Note- In the report, I renamed the determinations for clarity. These
-queries use the original determinations</em></p>
+queries use the original determinations.</em></p>
 <div id="create-tables-and-import-data-in-database" class="section level3">
 <h3>Create Tables and import data in Database</h3>
 <p>After collecting the relevant data, I needed to create tables within
 my Missouri Education database and import the data.</p>
 <details>
 <summary>
-<b>This one is long, <em>Click</em> to reveal query</b>
+<b>This one is long. <em>Click</em> to reveal query.</b>
 </summary>
 <pre class="sql"><code>
 -- Table: public.ccr
@@ -529,7 +529,7 @@ added, I would have left the tables as is in the database and queried
 them using join statements.</p>
 <details>
 <summary>
-<b>Another long one, <em>Click</em> to reveal query</b>
+<b>Another long one. <em>Click</em> to reveal query.</b>
 </summary>
 <pre class="sql"><code>
 /*Combine relevant data from all tables into one table.*/
@@ -572,7 +572,7 @@ CREATE TABLE combined AS
 <h3>Questions</h3>
 <p>This is where the fun begins.</p>
 <pre class="sql"><code>
-/* What is the Min, Max, Mean, and Median child poverty ratio (cpr)?*/
+/* What is the Min, Max, Mean, and Median child poverty ratio (cpr)? */
 
 SELECT MIN(child_poverty_ratio) AS min_child_poverty_ratio
   , MAX(child_poverty_ratio) AS max_cpr
@@ -699,7 +699,7 @@ WHERE child_poverty_ratio = (
 </div>
 <div id="college-proficiency-category" class="section level4">
 <h4>College Proficiency Category</h4>
-<pre class="sql"><code>/* How many districts are there in each college credit determination?*/
+<pre class="sql"><code>/* How many districts are there in each college credit determination? */
 
 SELECT college_credit_determ
     , COUNT(college_credit_determ) AS college_credit_totals
@@ -739,7 +739,7 @@ ORDER BY CASE
 </tbody>
 </table>
 </div>
-<pre class="sql"><code>/* What district has the highest college credit percentage and what is their child poverty ratio?*/
+<pre class="sql"><code>/* What district has the highest college credit percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , college_credit_pct
@@ -778,7 +778,7 @@ WHERE college_credit_pct = (
 </table>
 </div>
 <pre class="sql"><code>
-/* What district has the lowest college credit percentage and what is their child poverty ratio?*/
+/* What district has the lowest college credit percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , college_credit_pct
@@ -818,7 +818,7 @@ WHERE college_credit_pct = (
 </table>
 </div>
 <pre class="sql"><code>    
-/* What district has the Median college credit percentage and what is their child poverty ratio?*/
+/* What district has the Median college credit percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , college_credit_pct
@@ -864,7 +864,7 @@ WHERE college_credit_pct = (SELECT PERCENTILE_DISC(0.5)
 </table>
 </div>
 <pre class="sql"><code>
-/* What is the median, min, max, and mean poverty ratio in each college credit determination?*/
+/* What is the median, min, max, and mean poverty ratio in each college credit determination? */
 
 SELECT college_credit_determ
     , PERCENTILE_DISC(0.5)
@@ -925,7 +925,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* How many districts are in each college credit determination when poverty ratio is &lt;= 7%*/
+/* How many districts are in each college credit determination when poverty ratio is &lt;= 7% */
 
 SELECT college_credit_determ
     , COUNT(college_credit_determ) AS college_credit_totals
@@ -956,7 +956,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* At what child poverty level, if any, do more districts not meet the target for college credit than do? Round poverty ratio to nearest whole number. (Spoiler because you can&#39;t see the whole list: There are never more districts that don&#39;t meet the target than do)*/
+/* At what child poverty level, if any, do more districts not meet the target for college credit than do? Round poverty ratio to nearest whole number. (Spoiler because you can&#39;t see the whole list: There are never more districts that don&#39;t meet the target than do) */
 
 WITH test AS (
     SELECT college_credit_determ
@@ -1069,7 +1069,7 @@ ORDER BY cp_ratio, college_credit_determ ;
 <div id="post-secondary-placement-category" class="section level4">
 <h4>Post Secondary Placement Category</h4>
 <pre class="sql"><code>
-/*Number of districts in each secondary placement determination*/
+/*Number of districts in each secondary placement determination. */
 
 SELECT secondary_placement_determ
     , COUNT(secondary_placement_determ) AS secondary_placement_totals
@@ -1111,7 +1111,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* What district has the lowest secondary placement percentage and what is their child poverty ratio?*/
+/* What district has the lowest secondary placement percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , secondary_placement_pct
@@ -1151,7 +1151,7 @@ WHERE secondary_placement_pct = (
 </table>
 </div>
 <pre class="sql"><code>
-/* What district has the highest secondary placement percentage and what is their child poverty ratio?*/
+/* What district has the highest secondary placement percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , secondary_placement_pct
@@ -1245,7 +1245,7 @@ WHERE secondary_placement_pct = (
 </table>
 </div>
 <pre class="sql"><code>
-/* What is the median, min, max, and mean poverty ratio in each secondary placement determination?*/
+/* What is the median, min, max, and mean poverty ratio in each secondary placement determination? */
 
 SELECT secondary_placement_determ
     , PERCENTILE_DISC(0.5)
@@ -1306,7 +1306,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* How many districts are in each secondary placement determination when poverty ratio is &lt;= 7%*/
+/* How many districts are in each secondary placement determination when poverty ratio is &lt;= 7% */
 
 SELECT secondary_placement_determ
     , COUNT(secondary_placement_determ) AS secondary_placement_totals
@@ -1341,7 +1341,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* At what child poverty level, if any, do more districts not meet the target for secondary placement than do? Round poverty ratio to nearest whole number. (Spoiler because you can&#39;t see the whole list: There are never more districts that don&#39;t meet the target than do)*/
+/* At what child poverty level, if any, do more districts not meet the target for secondary placement than do? Round poverty ratio to nearest whole number. (Spoiler because you can&#39;t see the whole list: There are never more districts that don&#39;t meet the target than do) */
 
 WITH test AS (
     SELECT secondary_placement_determ
@@ -1452,7 +1452,7 @@ ORDER BY cp_ratio, secondary_placement_determ ;
 <div id="assessment-category" class="section level4">
 <h4>Assessment Category</h4>
 <pre class="sql"><code>
-/* How many districts are in each assessment determination?*/
+/* How many districts are in each assessment determination? */
 
 SELECT assessment_determ
     , COUNT(assessment_determ) AS assessment_totals
@@ -1494,7 +1494,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* What district has the lowest assessment percentage and what is their child poverty ratio?*/
+/* What district has the lowest assessment percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , assessment_pct
@@ -1534,7 +1534,7 @@ WHERE assessment_pct = (
 </table>
 </div>
 <pre class="sql"><code>    
-/* What district has the highest assessment percentage and what is their child poverty ratio?*/
+/* What district has the highest assessment percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , assessment_pct
@@ -1568,7 +1568,7 @@ WHERE assessment_pct = (
 </table>
 </div>
 <pre class="sql"><code>    
-/* What district has the Median assessment percentage and what is their child poverty ratio?*/
+/* What district has the Median assessment percentage and what is their child poverty ratio? */
 
 SELECT  district_name
     , assessment_pct
@@ -1614,7 +1614,7 @@ WHERE assessment_pct = (SELECT PERCENTILE_DISC(0.5)
 </table>
 </div>
 <pre class="sql"><code>
-/* What is the median, min, max poverty ratio in each assessment determination?*/
+/* What is the median, min, max poverty ratio in each assessment determination? */
 
 SELECT assessment_determ
     , PERCENTILE_DISC(0.5)
@@ -1669,7 +1669,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* How many districts are in each assessment determination when poverty ratio is &lt;= 7%*/
+/* How many districts are in each assessment determination when poverty ratio is &lt;= 7% */
 
 SELECT assessment_determ
     , COUNT(assessment_determ) AS assessment_totals
@@ -1700,7 +1700,7 @@ ORDER BY CASE
 </table>
 </div>
 <pre class="sql"><code>
-/* At what child poverty level, if any, do more districts not meet the target for assessment than do? Round poverty ratio to nearest whole number.*/
+/* At what child poverty level, if any, do more districts not meet the target for assessment than do? Round poverty ratio to nearest whole number. */
 
 WITH test AS (
     SELECT assessment_determ
@@ -1836,7 +1836,7 @@ ORDER BY cp_ratio, assessment_determ ;
 </table>
 </div>
 <pre class="sql"><code>
-/* A child poverty ratio of 24 is the tipping point at which more districts do not meet the target assessment score than do. With that in mind, what percentage of districts have a poverty ratio above 24%? Round poverty ratio to nearest whole number.*/
+/* A child poverty ratio of 24 is the tipping point at which more districts do not meet the target assessment score than do. With that in mind, what percentage of districts have a poverty ratio above 24%? Round poverty ratio to nearest whole number. */
 
 SELECT SUM(CASE
             WHEN child_poverty_ratio &gt; 24 THEN 1 ELSE 0 END) AS number_above_24
@@ -1866,11 +1866,11 @@ FROM combined;
 <div id="thoughts" class="section level3">
 <h3>Thoughts</h3>
 <p>This exercise really proves the need for visuals to really understand
-the data. Just looking at this data, it wouldn’t seem like there is any
+the data. Just looking at this data, it would seem that there is no
 connection between College and Career readiness and child poverty
-anywhere except possibly the assessment category. But when you start
+anywhere except, possibly, the assessment category. But when you start
 seeing all of the data visually, you get a better overall picture. If
-you’d like to see the full report with visuals, you can find it <a href="https://melissaharper.github.io//projects/2022/12/11/ccr_poverty_report.html">here.</a></p>
+you would like to see the full report with visuals, you can find it <a href="https://melissaharper.github.io//projects/2022/12/11/ccr_poverty_report.html">here.</a></p>
 </div>
 </div>
 

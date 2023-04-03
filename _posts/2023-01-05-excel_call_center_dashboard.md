@@ -13,7 +13,7 @@ image: /assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.J
 
 Above is a screenshot of an interactive dashboard I created in excel. It features dynamic charts that update when the workbook is opened and filters that allow the user to interact with the charts by filtering segmented data.
 
-"Melissa, why not just use one of the myriad of visualization tools that allow for ultimate customization?" Great question, internet stranger. The average user is often intimidated by specialized tools and, understandably, prefer programs with which they are familiar. This lead me to explore ways I could create a dashboard within excel that still provided the dynamic and interactive features of specialized visualization tools.  
+"Melissa, why not just use one of the myriad of visualization tools that allow for ultimate customization?" Great question, internet stranger. The average user can feel intimidated by specialized tools and, understandably, prefer programs with which they are familiar. This lead me to explore ways I could create a dashboard within excel that still provided the dynamic and interactive features of specialized visualization tools.  
 
 ### Dynamic
 
@@ -44,12 +44,12 @@ This exercise uses the call center data from the [Real World Fake Dataset](https
 #### Create pivot tables and charts
 
 - Create separate sheets for each chart
-  - Line Chart for the call trends.
-  - A doughnut chart for the Call channel.
-  - A map for the states.
-  - A column chart for the reason of calling.
-  - A bar chart for the response time.
-  - Key Performance Indicators (KPIs)
+  - Line Chart for the call trends
+  - A doughnut chart for the Call channel
+  - A map for the states
+  - A column chart for the reason of calling
+  - A bar chart for the response time
+  - Key Performance Indicators (KPI's)
 
 ##### Call Trends Line Chart
 
@@ -68,7 +68,9 @@ This exercise uses the call center data from the [Real World Fake Dataset](https
 ##### Map
 
 - Create pivot chart as above using "state" for rows
-- If we insert a map at this step, we will get an error. Instead:
+
+If we insert a map at this step, we will get an error. Instead:
+
 - Copy all data from the pivot table
 - Paste "values" in a blank cell
 - Select the pasted data
@@ -85,7 +87,7 @@ This exercise uses the call center data from the [Real World Fake Dataset](https
 - Create pivot chart as above using "reason" for rows
 - Insert a column chart
 
-##### Repsonse Time Bar Chart
+##### Response Time Bar Chart
 
 - Create a pivot table as above using "response\_time" for rows
 - Insert a bar chart
@@ -103,7 +105,7 @@ This exercise uses the call center data from the [Real World Fake Dataset](https
 
 - Create another sheet named "Dashboard"
 - Remove the grid lines
-- Under "Page Layout", insert a background picture
+- Under "Page Layout," insert a background picture
   - Choose a picture that is monochromatic without a lot of geometry that may obscure the actual dashboard
 - Insert a text box at top center for your header, naming the dashboard "Performance Dashboard"
   - Remove fill and line from text box
