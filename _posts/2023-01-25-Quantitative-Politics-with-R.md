@@ -4,6 +4,7 @@ title: "2023-01-25 Quantitative Politics with R"
 author: "Harper"
 categories: practice
 tag: R
+image: /assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG
 ---
 
 
@@ -15,7 +16,6 @@ I've been looking to practice some of the basics of R programming. In this post,
 ## Create data by webscraping online files  
 
 Let's begin by testing a single election file from 1955 and inspecting the data.  
-
 
 ```r
 el_1955 <- read_delim(
@@ -427,7 +427,7 @@ ggplot(ep14, aes(x = share, y = seats)) +
 ## Warning: Removed 27 rows containing missing values (`geom_text_repel()`).
 ```
 
-<img src="2023-01-25-Quantitative-Politics-with-R_files/figure-html/Create dotplot-1.svg" width="100%" />
+<img src="/assets/images/Create%20dotplot-1.svg" />
 
 
 

@@ -9,7 +9,7 @@ plugins:
 # Site settings
 title: "Melissa Harper"
 description: > # this means to ignore newlines until "email:"
-   .
+   This site is a small portfolio featuring some examples of my data science work.
 
 #email: a-mail@mail.mail
 #blog logo
