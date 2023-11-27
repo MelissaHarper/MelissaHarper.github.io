@@ -7,6 +7,8 @@ tags: excel
 image: /assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG
 ---
 
+{::options parse_block_html="true" /}
+
 <center><h1> Creating an interactive dashboard using Excel </h1></center>  
 
 ![Interactive dashboard built in Excel](/assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG)
@@ -28,8 +30,8 @@ Because I created each chart from a pivot table, I was able to link every slicer
 ![Connect all Pivot Tables to slicers](/assets/article_images/2023-01-05-excel_dashboard/slicer_report_connections.JPG)
 
 ### Process
-
-Below is documentation on the steps I took to create the dashboard seen in the screenshot above. These steps assume a working knowledge of Excel.
+<details>
+  <summary markdown="span">Click here to see documentation on the steps I took to create the dashboard seen in the screenshot above. These steps assume a working knowledge of Excel.</summary>
 
 #### Download and open dataset
 
@@ -151,3 +153,5 @@ If we insert a map at this step, we will get an error. Instead:
 
 For a more detailed description, you can follow the video below that uses a different data set. Or, follow the steps found in [this article](https://medium.com/@Armonia1999/data-analysis-project-excel-dashboard-10c6160f2dbe) that uses the same data set as the above dashboard.
 {% include excel_dashboard_youtube.html id="20zDV9MNE0s"%}
+
+</details>
