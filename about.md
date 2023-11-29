@@ -5,7 +5,7 @@ permalink: /about/
 ---
 ## About
 
-I spent a decade as an educator blissfully unaware that one of my favorite aspects of my job, data analysis, was an entire career unto itself. When the time came to transition into a new career, I realized I already had 10 years of data analysis under my belt and smoothly traversed the path to a new career.  
+I spent a decade as an educator blissfully performing data analysis on the daily as just one function of my job. When the time came to transition into a new career, data analytics was a natural transition.
 
 ## Summary Statement
 
@@ -13,4 +13,4 @@ Versatile, quality-oriented professional with a unique intersection of technical
 
 ## Skills
 
-<p style="text-align: center;">• SQL • R • Tableau • Spreadsheets • Microsoft Office and Google Suites • Data Analysis and Visualization • Github • Public Speaking • Project Management • Problem Solving • Critical and Creative Thinking • Comprehensive Communication Expertise • Collaboration</p>
+<p style="text-align: center;">• SQL • R • Python • Tableau • Spreadsheets • Microsoft Office and Google Suites • Data Analysis and Visualization • Github • Public Speaking • Project Management • Problem Solving • Critical and Creative Thinking • Comprehensive Communication Expertise • Collaboration</p>
