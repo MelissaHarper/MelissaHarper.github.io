@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2023-01-25 Quantitative Politics with R"
+title: "Scraping Data: Quantitative Politics with R"
 author: "Harper"
 categories: practice
 tag: R
