@@ -37,7 +37,22 @@ baseurl: ""
 
 # social icons and sharing options
 social:
-#   - icon:	twitter
+  - icon:	github
+    url:	https://github.com/melissaharper
+    desc:	
+    share_url:
+    share_title:
+    share_link:
+
+  - icon:	linkedin
+    url:	www.linkedin.com/in/harper-melissa
+
+# #    desc:
+# #    share_url:
+# #    share_title:
+# #    share_link:
+
+# #  - icon:	twitter
 #     url:
 #     desc: Follow me on twitter
 #     share_url: http://twitter.com/share
@@ -50,17 +65,3 @@ social:
 # #    share_url: https://www.facebook.com/sharer.php
 # #    share_title: ?t=
 # #    share_link: "&amp;u="
-
-  - icon:	github
-    url:	https://github.com/melissaharper
-    desc:	
-    share_url:
-    share_title:
-    share_link:
-
- #- icon:	linkedin
-  #  url:	www.linkedin.com/in/harper-melissa
-# #    desc:
-# #    share_url:
-# #    share_title:
-# #    share_link:
