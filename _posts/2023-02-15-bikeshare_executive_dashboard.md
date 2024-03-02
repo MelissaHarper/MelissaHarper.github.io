@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Bike Store Revenue- Executive Dashboard"
+title: "Bike Store Revenue- Tableau Executive Dashboard"
 author: "Harper"
 date: "2023-02-15"
-categories: 
+categories: dashboards
 tags:
 image:
 output:
@@ -15,11 +15,6 @@ always_allow_html: TRUE
 ---
 
 
-
-# <center> Tableau Executive Dashboard from Relational Database. </center>
-
-<br>
-<br>
 
 Our fictional bike store company has requested a dashboard for which they can easily look at revenue by several variables. Starting in PostgreSQL, I extracted the necessary data from 8 different tables within a relational database. Taking that data over to Tableau, you can see the interactive dashboard embedded below. 
 

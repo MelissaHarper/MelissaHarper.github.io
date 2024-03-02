@@ -23,7 +23,7 @@ name: "Melissa Harper"
 author: "Melissa Harper"
 author_image: "/assets/images/harper.jpg"
 
-paginate:	5
+paginate:	15
 
 url: "https://melissaharper.github.io" # the base hostname & protocol for your site
 baseurl: ""

@@ -4,22 +4,19 @@ title: "Excel- Call Center Dashboard"
 date: 23-01-05
 categories: dashboards
 tags: excel
-image: /assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG
+image:
+image2:
 ---
 
-{::options parse_block_html="true" /}
-
-<center><h1> Creating an interactive dashboard using Excel </h1></center>  
-
-![Interactive dashboard built in Excel](/assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG)
+![Screenshot of an interactive dashboard built in Excel](/assets/article_images/2023-01-05-excel_dashboard/Call_Center_Dashboard.JPG)
 
 Above is a screenshot of an interactive dashboard I created in excel. It features dynamic charts that update when the workbook is opened and filters that allow the user to interact with the charts by filtering segmented data.
 
-"Melissa, why not just use one of the myriad of visualization tools that allow for ultimate customization?" Great question, internet stranger. The average user can feel intimidated by specialized tools and, understandably, prefer programs with which they are familiar. This lead me to explore ways I could create a dashboard within excel that still provided the dynamic and interactive features of specialized visualization tools.  
+"Melissa, why not just use one of the myriad of visualization tools that allow for ultimate customization?" Great question, internet stranger. The average user can feel intimidated by specialized tools and, understandably, may prefer programs with which they are already familiar. This lead me to explore ways I could create a dashboard within excel that still provided the dynamic and interactive features of specialized visualization tools.  
 
 ### Dynamic
 
-Initially I planned to use a worksheet change event within the VBA code that would cause the pivot tables to refresh when any data was added to the source sheet. However, this would also clear the change history within the sheet as well. As an *avid* undo user, this was not an option. Instead, I compromised by setting the pivot table options to refresh whenever the workbook was opened. While not *ideal* it does ensure users are seeing the most up to date information when opening the file and safeguards users from unknowingly engaging with outdated charts in the event changes have been made by other users.  
+Initially I planned to use a worksheet change event within the VBA code that would cause the pivot tables to refresh when any data was added to the source sheet. However, this would also clear the change history within the sheet as well. As an *avid* user of the undo function, this was not an option. Instead, I compromised by setting the pivot table options to refresh whenever the workbook was opened. While not *ideal* it does ensure users are seeing the most up to date information when opening the file and safeguards users from unknowingly engaging with outdated charts in the event changes have been made by other users.  
 
 ![Pivot tables set to automatically refresh when file is opened](/assets/article_images/2023-01-05-excel_dashboard/refresh_data.JPG)
 

@@ -1,27 +1,29 @@
 ---
-layout: post
 title: "Scraping Data: Quantitative Politics with R"
 author: "Harper"
-categories: practice
-tag: R
-image: /assets/article_images/2023-01-05-excel_dashboard/Call Center Dashboard.JPG
+date: "2023-01-25"
+output:    
+  html_document:
+    keep_md: TRUE
+    self_contained: yes
+    mode: selfcontained
+always_allow_html: TRUE
 ---
 
 
 
-## R Data Exercises
+I've been looking to go back and practice some of the basics of R programming. ["Quantitative Politics with R"](https://erikgahner.dk/2022/teaching-material-quantitative-politics-with-r-2/) by Erik Gahner Larsen and Zoltán Fazekas has a chapter on creating data through some simple web scraping and that's what I'll be using for this practice.
 
-I've been looking to practice some of the basics of R programming. In this post, I'll be practicing creating data through some simple web scraping using "Quantitative Politics with R" by Erik Gahner Larsen and Zoltán Fazekas. The goal is to showcase the code that gets us to the results.
+### Create data by webscraping online files
 
-## Create data by webscraping online files  
+Let's begin by testing a single election file from 1955 and inspecting the data to verify it's what we want.  
 
-Let's begin by testing a single election file from 1955 and inspecting the data.  
 
 ```r
 el_1955 <- read_delim(
   "https://www.electoralcalculus.co.uk/electdata_1955.txt",
   delim = ";"
-)
+) # Import file from url
 ```
 
 ```
@@ -36,20 +38,19 @@ el_1955 <- read_delim(
 ```
 
 ```r
-head(el_1955)
+head(el_1955) # View first 6 rows
 ```
 
 ```
 ## # A tibble: 6 × 11
-##   Name            MP     Area County Elect…¹   CON   LAB   LIB   NAT   MIN   OTH
-##   <chr>           <chr> <dbl> <chr>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-## 1 Abingdon        AMS …    12 Berks…   58487 25613 16979  8634     0     0     0
-## 2 Accrington      H Hy…     4 Lanca…   50938 21157 22502     0     0     0     0
-## 3 Acton           JA S…    11 Ealing   49373 20120 20645     0     0     0     0
-## 4 Aldershot       E Er…    12 Hamps…   54209 22701 13129  4232     0     0     0
-## 5 Altrincham and… FJ E…     4 Centr…   61525 30586 12174  6436     0     0     0
-## 6 Arundel and Sh… HB K…    12 West …   69034 35180 15188     0     0     0     0
-## # … with abbreviated variable name ¹​Electorate
+##   Name         MP     Area County Electorate   CON   LAB   LIB   NAT   MIN   OTH
+##   <chr>        <chr> <dbl> <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1 Abingdon     AMS …    12 Berks…      58487 25613 16979  8634     0     0     0
+## 2 Accrington   H Hy…     4 Lanca…      50938 21157 22502     0     0     0     0
+## 3 Acton        JA S…    11 Ealing      49373 20120 20645     0     0     0     0
+## 4 Aldershot    E Er…    12 Hamps…      54209 22701 13129  4232     0     0     0
+## 5 Altrincham … FJ E…     4 Centr…      61525 30586 12174  6436     0     0     0
+## 6 Arundel and… HB K…    12 West …      69034 35180 15188     0     0     0     0
 ```
   
 We can see that the above data loaded correctly, so now we can set up a function to scrape the files for the election years we are interested in.  
@@ -63,7 +64,7 @@ election_years <- c("1955", "1959", "1964", "1966", "1970", "1974feb",
                     "2001ob", "2005ob", "2010", "2015", "2017")
 ```
   
-Next we'll put together the function to scrape data. We'll use past0() to concatenate our url, year, and file type and read_delim() for the year we specify.  
+Next we'll put together a function to scrape data. From our test link we can see that the year and file type are at the end of the url. So, we'll use past0() to concatenate our url with the year and file type. Then we'll use read_delim() as we did previously to import the data. Finally, we'll use the mutate function to add a 'year' column and use the election year to fill the column for each dataset.  
 
 
 ```r
@@ -75,7 +76,7 @@ read_election_data <- function(election) {
 }
 ```
   
-Now that we've created the function, we can use lapply() to run the function for all the years we previously specified and bind_rows() to put them all together. Then we'll inspect the results.  
+Now that we've created the function, we can use lapply() to run the function across the list of years we previously specified, and bind_rows() to put all of the data together into one dataframe. Then we'll inspect the results.  
 
 
 ```r
@@ -227,19 +228,18 @@ head(elections)
 
 ```
 ## # A tibble: 6 × 14
-##   Name      MP     Area County Elect…¹   CON   LAB   LIB   NAT   MIN   OTH year 
-##   <chr>     <chr> <dbl> <chr>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>
-## 1 Abingdon  AMS …    12 Berks…   58487 25613 16979  8634     0     0     0 1955 
-## 2 Accringt… H Hy…     4 Lanca…   50938 21157 22502     0     0     0     0 1955 
-## 3 Acton     JA S…    11 Ealing   49373 20120 20645     0     0     0     0 1955 
-## 4 Aldershot E Er…    12 Hamps…   54209 22701 13129  4232     0     0     0 1955 
-## 5 Altrinch… FJ E…     4 Centr…   61525 30586 12174  6436     0     0     0 1955 
-## 6 Arundel … HB K…    12 West …   69034 35180 15188     0     0     0     0 1955 
-## # … with 2 more variables: UKIP <dbl>, Green <dbl>, and abbreviated variable
-## #   name ¹​Electorate
+##   Name   MP     Area County Electorate   CON   LAB   LIB   NAT   MIN   OTH year 
+##   <chr>  <chr> <dbl> <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>
+## 1 Abing… AMS …    12 Berks…      58487 25613 16979  8634     0     0     0 1955 
+## 2 Accri… H Hy…     4 Lanca…      50938 21157 22502     0     0     0     0 1955 
+## 3 Acton  JA S…    11 Ealing      49373 20120 20645     0     0     0     0 1955 
+## 4 Alder… E Er…    12 Hamps…      54209 22701 13129  4232     0     0     0 1955 
+## 5 Altri… FJ E…     4 Centr…      61525 30586 12174  6436     0     0     0 1955 
+## 6 Arund… HB K…    12 West …      69034 35180 15188     0     0     0     0 1955 
+## # ℹ 2 more variables: UKIP <dbl>, Green <dbl>
 ```
   
-## Create data by webscraping online tables  
+### Create data by webscraping online tables  
 
 Next we'll practice scraping data from tables found on a webpage.  
 
@@ -259,7 +259,7 @@ Then, using read_html, we'll save the data from the page.
 wikipage <- read_html(url)  
 ```
   
-Then take a look at the type of data we saved.  
+Then take a look at the class of data we saved.  
 
 
 ```r
@@ -270,11 +270,11 @@ class(wikipage)
 ## [1] "xml_document" "xml_node"
 ```
   
-We can see that we saved an xml_document and xml_node. Next we'll want to save the tables in that data and inspect.  
+We can see that we saved an xml_document and xml_node. Next we'll want to save the tables found on the with page data and look at what we've got.
 
 
 ```r
-data_table <- html_nodes(wikipage,"table")  
+data_table <- html_elements(wikipage,"table")  # Specify we're looking for all "table" elements.
 
 data_table  
 ```
@@ -304,14 +304,14 @@ data_table
 ## ...
 ```
   
-Let's pick out a specific table. From the wiki page, we can pick out the data on the number of votes parties received and see that it is table 15 from our saved data.  
+From the wiki page, we can pick out pick out a specific table. If we want to look at the "Results of the 2014 European Parliament election", we can sift through our output from the previous code chunk and see that it is table 15.
 
-We'll use html_table() to get the tables and pipe in pluck() to get the specific table we're looking for. Because some of the cells in the table are empty, we'll use fill=TRUE in html_table(), saving the object as ep14_raw to indicate it is the raw, unchanged data. Then we'll use class() to confirm we've saved the data as a data_frame.  
+We'll use html_table() to get the tables and pipe in pluck() from the purr package to specify the table we're looking for in our data. Because some of the cells in the table are empty, previously we would need to use fill=TRUE in html_table(). As of this writing, that argument is depreciated and the function now fills all missing cells automatically with 'NA'. We'll save the object as ep14_raw to indicate it is the raw, unchanged data. Then we'll use class() to confirm we've saved the data as a data_frame.  
 
 
 ```r
 ep14_raw <- data_table %>%
-  html_table(fill=TRUE) %>%
+  html_table(fill=TRUE) %>% 
   purrr::pluck(15)  
 
 class(ep14_raw)  
@@ -321,9 +321,9 @@ class(ep14_raw)
 ## [1] "tbl_df"     "tbl"        "data.frame"
 ```
   
-Now we can begin to clean up our data.  
+Now that we've extracted the data we want, we can begin to clean it.  
 
-We'll start by looking at the last of the data to see any issues there.  
+We'll start by looking at the last bit of data, anticipating it will need to be cleaned because of what we saw on the wikipage.  
 
 
 ```r
@@ -342,18 +342,32 @@ tail(ep14_raw)
 ## 6 "Overall turnout" Overall tur… 16,5… 35.6  "0.9" ""    ""    ""    NA    NA
 ```
 
-We see that the last three rows are aggregated data. Let's remove those.  
+We see that the last three rows are aggregated data that we don't need, so we'll remove those and then verify they are gone. We'll also assign a new name for our cleaned dataframe indicating it is no longer the raw data.
 
 
 ```r
-ep14_raw <- ep14_raw[-c(32:34), ]  
+ep14 <- ep14_raw[-c(32:34), ]  # Specify the index numbers of the rows we want to remove from the data
+
+tail(ep14)
+```
+
+```
+## # A tibble: 6 × 10
+##   Party Party           Votes  Votes Votes Seats Seats Seats ``    ``   
+##   <chr> <chr>           <chr>  <chr> <chr> <chr> <chr> <chr> <lgl> <lgl>
+## 1 ""    Yorkshire First 19,017 0.1   "New" 0     ""    ""    NA    NA   
+## 2 ""    Europeans Party 10,712 0.1   "New" 0     ""    ""    NA    NA   
+## 3 ""    Green (NI)      10,598 0.1   ""    0     ""    ""    NA    NA   
+## 4 ""    NI21            10,553 0.1   "New" 0     ""    ""    NA    NA   
+## 5 ""    Peace Party     10,130 0.1   ""    0     ""    ""    NA    NA   
+## 6 ""    Others          55,011 0.3   "3.4" 0     ""    ""    NA    NA
 ```
   
-Now we'll move to the front end of our data for cleaning.  
+Now we'll move to the beginning of our data for cleaning.  
 
 
 ```r
-head(ep14_raw)  
+head(ep14)  
 ```
 
 ```
@@ -368,50 +382,72 @@ head(ep14_raw)
 ## 6 ""      Liberal Democrats      1,08… 6.6   6.7   1     10    1.4   NA    NA
 ```
 
-We can see that the variable names are not unique. We'll give specific names to variables we are interested in, and innocuous names to the ones we aren't.  
+We can see that the variable names are not unique, so we'll give specific names to variables we are interested in, and innocuous names to the ones we aren't. Then we'll keep only those columns that we are interested in, and check our work.
 
 
 ```r
-names(ep14_raw) <- c("V1", "party", "votes", "share", "V5",
-                     "seats", "V7", "V8", "V9", "V10")  
+names(ep14) <- c("V1", "party", "votes", "percent_share", "V5",
+                     "seats", "V7", "V8", "V9", "V10") # Rename columns
+
+ep14 <- ep14[, c("party", "votes", "percent_share", "seats")] # Keep only the columns we want
+
+head(ep14)
+```
+
+```
+## # A tibble: 6 × 4
+##   party                            votes     percent_share seats
+##   <chr>                            <chr>     <chr>         <chr>
+## 1 Party                            Number    %             Seats
+## 2 UK Independence Party            4,376,635 26.6          24   
+## 3 Labour Party                     4,020,646 24.4          20   
+## 4 Conservative Party               3,792,549 23.1          19   
+## 5 Green Party of England and Wales 1,136,670 6.9           3    
+## 6 Liberal Democrats                1,087,633 6.6           1
 ```
   
 Then we'll remove the first row which is just a duplicate of the column headers.  
 
 
 ```r
-ep14_raw <- ep14_raw[-c(1), ]  
+ep14 <- ep14[-c(1), ]  
+
+head(ep14)
 ```
-  
-Next we'll remove the columns that we don't need by selecting only the columns we want.  
+
+```
+## # A tibble: 6 × 4
+##   party                            votes     percent_share seats
+##   <chr>                            <chr>     <chr>         <chr>
+## 1 UK Independence Party            4,376,635 26.6          24   
+## 2 Labour Party                     4,020,646 24.4          20   
+## 3 Conservative Party               3,792,549 23.1          19   
+## 4 Green Party of England and Wales 1,136,670 6.9           3    
+## 5 Liberal Democrats                1,087,633 6.6           1    
+## 6 Scottish National Party          389,503   2.4           2
+```
+
+Lastly, we'll identify the numeric variables as such.  
 
 
 ```r
-ep14_raw <- ep14_raw %>%
-  select(party, votes, share, seats)  
-```
-  
-Lastly, we'll identify the numeric variables as such and rename our cleaned table.  
-
-
-```r
-ep14 <- ep14_raw %>%
+ep14 <- ep14 %>%
   mutate(
-    votes = parse_number(votes),
-    share = as.numeric(share),
+    votes = parse_number(votes), # removes commas from the votes column
+    percent_share = as.numeric(percent_share),
     seats = as.numeric(seats)
   )  
 ```
-  
-Now that we've created our data let's make a simple dot plot labeling all parties that have a vote share greater than 15.  
+
+Now that we've created our data we'll finish up our practice by creating a simple dot plot and add a label for the parties that have a vote share greater than 15%.
 
 
 ```r
-ggplot(ep14, aes(x = share, y = seats)) +
+ggplot(ep14, aes(x = percent_share, y = seats)) +
   geom_point() +
   theme_minimal() +
   ggrepel::geom_text_repel(
-    aes(label = ifelse(share > 15, party, NA)),
+    aes(label = ifelse(percent_share > 15, party, '')),
     size = 4.5,
     point.padding = .2,
     box.padding = .4
@@ -420,14 +456,10 @@ ggplot(ep14, aes(x = share, y = seats)) +
     y = "Number of seats",
     x = "Vote share",
     title = "2014 European Parliament election, United Kingdom"
-  )  
+  )
 ```
 
-```
-## Warning: Removed 27 rows containing missing values (`geom_text_repel()`).
-```
-
-<img src="/assets/images/Create%20dotplot-1.svg" />
+<img src="2023-01-25-Quantitative-Politics-with-R_files/figure-html/Create dotplot-1.svg" width="100%" />
 
 
 
