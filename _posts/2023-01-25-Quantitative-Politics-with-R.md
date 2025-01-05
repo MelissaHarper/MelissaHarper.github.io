@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Scraping Data: Quantitative Politics with R"
 author: "Harper"
 date: "2023-01-25"
@@ -81,145 +82,6 @@ Now that we've created the function, we can use lapply() to run the function acr
 
 ```r
 elections <- bind_rows(lapply(election_years, read_election_data))  
-```
-
-```
-## Rows: 630 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 630 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 630 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 630 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 630 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 635 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 635 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 635 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 650 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 650 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 651 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 659 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 659 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 646 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 650 Columns: 11
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr (3): Name, MP, County
-## dbl (8): Area, Electorate, CON, LAB, LIB, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 650 Columns: 13
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr  (3): Name, MP, County
-## dbl (10): Area, Electorate, CON, LAB, LIB, UKIP, Green, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 650 Columns: 13
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ";"
-## chr  (3): Name, MP, County
-## dbl (10): Area, Electorate, CON, LAB, LIB, UKIP, Green, NAT, MIN, OTH
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```r
@@ -459,7 +321,7 @@ ggplot(ep14, aes(x = percent_share, y = seats)) +
   )
 ```
 
-<img src="2023-01-25-Quantitative-Politics-with-R_files/figure-html/Create dotplot-1.svg" width="100%" />
+![dotplot image](/assets/article_images/2023-01-25-Quantitative-Politics-with-R/Create dotplot-1.png)
 
 
 
