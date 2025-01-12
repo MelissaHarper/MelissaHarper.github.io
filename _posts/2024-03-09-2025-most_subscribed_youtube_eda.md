@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Most Subscribed Youtube Channels Mini Exploritory Data Analysys"
-date: 09/01/2025
+date: 09/03/2024
 categories: python, data analysis
 # image: /assests/atricle_images/[post_folder]/[image] -this is the desktop image
 # image2: /assests/atricle_images/[post_folder]/[image] -this is the mobile image
